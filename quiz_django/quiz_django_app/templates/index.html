@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <body>
+
+        <div id="main-container">
+            
+            <div id="header-container">
+                <h1>Welcome in quiz game !!!</h1>
+            </div>
+            
+            <div id="body-container">
+
+                <button id="start-game-button"> <a href="{% url 'question' %}" id="start-game-button">START GAME</a></button>
+
+            </div>
+            
+
+        </div>
+        
+    </body>
+
+</html>

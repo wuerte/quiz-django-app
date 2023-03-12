@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(108, 105, 97);
+}
+
+#main-container {
+    background-color: rgb(54, 51, 51);
+    color: gold;
+    width: 60%;
+    margin: auto;
+    margin-top: 80px;
+    border: solid 2px gold;
+    border-radius: 10px;
+    min-height: 600px;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#header-container {
+    background-color: gold;
+    color: rgb(54, 51, 51);
+    margin-top: 0px;
+    padding-top: 11px;
+    padding-bottom: 10px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+#start-game-button {
+    font-size: 70px;
+    text-decoration: none;
+    align-items: center;
+    background-color: gold;
+    color: black;
+    border-color: black;
+    padding: 30px;
+}
+
+#body-container {
+    margin-top: 30px;
+}
