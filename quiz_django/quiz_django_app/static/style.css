@@ -8,7 +8,7 @@ body {
     width: 60%;
     margin: auto;
     margin-top: 80px;
-    border: solid 2px gold;
+    border: solid 3px gold;
     border-radius: 10px;
     min-height: 600px;
     font-family: sans-serif;
@@ -32,8 +32,17 @@ body {
     color: black;
     border-color: black;
     padding: 30px;
+    border-radius: 10px;
+    opacity: 0.8;
+    transition: 0.75s;
+}
+
+#start-game-button:hover {
+    background-color: rgb(249, 214, 16);
+    opacity: 1;
+    transition: 0.75s;
 }
 
 #body-container {
-    margin-top: 30px;
+    margin-top: 60px;
 }
