@@ -21,22 +21,22 @@
 
 {% block content %}
     
-  <form method="post" action="/question/{{ new_game.id }}">
+  <form method="post" action="/question/game={{ new_game.id }}">
 
     {% csrf_token %}
-    <p>{{ question_1.question_description }}</p>
+    <p>{{ question_2.question_description }}</p>
     
     <input type="radio" id="color_red" name="color" value="red">
-    <label for="color_red">{{ question_1.answer_1 }}</label><br>
+    <label for="color_red">{{ question_2.answer_1 }}</label><br>
 
     <input type="radio" id="color_blue" name="color" value="blue">
-    <label for="color_blue">{{ question_1.answer_2 }}</label><br>
+    <label for="color_blue">{{ question_2.answer_2 }}</label><br>
 
     <input type="radio" id="color_green" name="color" value="green">
-    <label for="color_green">{{ question_1.answer_3 }}</label><br>
+    <label for="color_green">{{ question_2.answer_3 }}</label><br>
     
     <input type="radio" id="color_yellow" name="color" value="yellow">
-    <label for="color_yellow">{{ question_1.answer_4 }}</label><br><br>
+    <label for="color_yellow">{{ question_2.answer_4 }}</label><br><br>
     
     <input type="submit" value="sumbit" id="">
   
