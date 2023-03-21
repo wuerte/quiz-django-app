@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import *
+import random
 
 
 def index(request):
@@ -19,5 +20,16 @@ def first_question(request):
     }
     return render(request, 'first_question.html', context)
 
-def question(request):
-    return render(request, 'question.html')
+def question(request, game_id):
+    all_questions_number = Question.get_all_questions()
+    random_question_id = random.randint(1, all_questions_number)
+    actual_question = Question.objects.get(id=random_question_id)
+
+    game = Game.objects.get(id=game_id)
+
+    context = {
+        'question_number': actual_question,
+        'game': game
+    }
+
+    return render(request, 'question.html', context)

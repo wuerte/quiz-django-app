@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
 class Game(models.Model):
     question_quantity = models.IntegerField()
     actual_question = models.IntegerField(default=1)
@@ -17,3 +18,9 @@ class Question(models.Model):
 
     def __str__(self):
         return "question nr: " + str(self.id)
+    
+    @classmethod
+    def get_all_questions(self):
+        all_questions = Question.objects.all()
+        all_questions_number = len(all_questions)
+        return all_questions_number

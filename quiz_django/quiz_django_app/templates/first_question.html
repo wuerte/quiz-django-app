@@ -21,7 +21,7 @@
 
 {% block content %}
     
-  <form method="post" action="/question/{{ new_game.id }}">
+  <form method="post" action="/quiz/question/{{ new_game.id }}">
 
     {% csrf_token %}
     <p>{{ question_1.question_description }}</p>
