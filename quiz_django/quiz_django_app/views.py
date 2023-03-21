@@ -23,13 +23,15 @@ def first_question(request):
 def question(request, game_id):
     all_questions_number = Question.get_all_questions()
     random_question_id = random.randint(1, all_questions_number)
-    actual_question = Question.objects.get(id=random_question_id)
-
+    question = Question.objects.get(id=random_question_id)
+    
     game = Game.objects.get(id=game_id)
+    game.actual_question += 1
+    game.save()
 
     context = {
-        'question_number': actual_question,
-        'game': game
+        'question_number': question,
+        'game': game,
     }
 
     return render(request, 'question.html', context)
