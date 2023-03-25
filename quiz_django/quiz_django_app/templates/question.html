@@ -26,17 +26,21 @@
     {% csrf_token %}
     <p>{{ question_number.question_description }}</p>
     
-    <input type="radio" id="color_red" name="color" value="red">
-    <label for="color_red">{{ question_number.answer_1 }}</label><br>
+    <input type="radio" id="color_red" name="answer" value="1" required>
+    <label for="color_red">{{ question_1.answer_1 }}</label><br>
 
-    <input type="radio" id="color_blue" name="color" value="blue">
-    <label for="color_blue">{{ question_number.answer_2 }}</label><br>
+    <input type="radio" id="color_blue" name="answer" value="2" required>
+    <label for="color_blue">{{ question_1.answer_2 }}</label><br>
 
-    <input type="radio" id="color_green" name="color" value="green">
-    <label for="color_green">{{ question_number.answer_3 }}</label><br>
+    <input type="radio" id="color_green" name="answer" value="3" required>
+    <label for="color_green">{{ question_1.answer_3 }}</label><br>
     
-    <input type="radio" id="color_yellow" name="color" value="yellow">
-    <label for="color_yellow">{{ question_number.answer_4 }}</label><br><br>
+    <input type="radio" id="color_yellow" name="answer" value="4" required>
+    <label for="color_yellow">{{ question_1.answer_4 }}</label><br>
+    
+    <br>
+    
+    <input type="submit" value="sumbit">
     
     <input type="submit" value="sumbit" id="">
   
