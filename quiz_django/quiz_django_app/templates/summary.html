@@ -1,0 +1,36 @@
+{% extends "master_template.html" %}
+
+{% block title %}
+
+  Quiz summary
+
+{% endblock %}
+
+
+{% block header %}
+
+    <div id="header-container">
+
+        {% comment %} <h1>Question nr {{ game.question_counter }}</h1>
+        <p>Game id:{{ game.id }}</p>
+        <p>Total score:{{ game.total_score }}</p> {% endcomment %}
+
+        <p>Quiz finished !</p>
+
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    
+    <p>After {{ game.question_quantity }} questions,</p>
+    <p>You get {{ game.total_score }} points </p>
+
+    <br>
+
+    <a href="{% url 'index' %}" id="start-game-button" class="start-game-button-a">
+        MAIN MENU
+    </a>
+  
+    
+{% endblock %}

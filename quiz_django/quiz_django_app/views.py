@@ -14,7 +14,7 @@ def first_question(request):
     
     question_1 = Question.generate_random_question()
 
-    new_game = Game(question_quantity = 3, actual_question = question_1.id)
+    new_game = Game(question_quantity = 5, actual_question = question_1.id)
     new_game.save()
 
     context = {
@@ -46,4 +46,7 @@ def question(request, game_id):
         'game': game,
     }
 
-    return render(request, 'question.html', context)
+    if game.question_counter <= game.question_quantity:
+        return render(request, 'question.html', context)
+    else:
+        return render(request, 'summary.html', context)
