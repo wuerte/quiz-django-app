@@ -9,6 +9,7 @@ def index(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
+
 def first_question(request):
     
     question_1 = Question.generate_random_question()
@@ -22,22 +23,26 @@ def first_question(request):
     }
     return render(request, 'first_question.html', context)
 
+
 def question(request, game_id):
 
-    all_questions_number = Question.get_all_questions()
-    random_question_id = random.randint(1, all_questions_number)
-    question = Question.objects.get(id=random_question_id)
-    
     game = Game.objects.get(id=game_id)
-    game.actual_question += 1
+    
+    #checking if the our answer is correct
+    answer = int(request.POST['answer'])
+    previous_question = Question.objects.get(id = game.actual_question)
+    correct_answer = previous_question.correct_answer
+    if answer == correct_answer:
+        game.total_score += 1
+    
+    new_question = Question.generate_random_question()
+    
+    game.actual_question = new_question.id
+    game.question_counter += 1
     game.save()
 
-    #add question id to arguments of methods, pass it in question.html and add scoring mechanism below
-    answer = request.POST['answer']
-
-
     context = {
-        'question_number': question,
+        'question': new_question,
         'game': game,
     }
 

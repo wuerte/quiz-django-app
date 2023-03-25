@@ -12,8 +12,8 @@
     <div id="header-container">
 
         <h1>Question nr 1</h1>
-        <p>Game id:{{ new_game.id }}</p>
-        <p>Total score:{{ new_game.total_score }}</p>
+        <p>Game id:{{ game.id }}</p>
+        <p>Total score:{{ game.total_score }}</p>
 
     </div>
 
@@ -21,22 +21,22 @@
 
 {% block content %}
     
-  <form method="post" action="/quiz/question/{{ new_game.id }}">
+  <form method="post" action="/quiz/question/{{ game.id }}">
 
     {% csrf_token %}
     <p>{{ question_1.question_description }}</p>
     
-    <input type="radio" id="color_red" name="answer" value="1" required>
-    <label for="color_red">{{ question_1.answer_1 }}</label><br>
+    <input type="radio" id="quest1" name="answer" value="1" required>
+    <label for="quest1">{{ question_1.answer_1 }}</label><br>
 
-    <input type="radio" id="color_blue" name="answer" value="2" required>
-    <label for="color_blue">{{ question_1.answer_2 }}</label><br>
+    <input type="radio" id="quest2" name="answer" value="2" required>
+    <label for="quest2">{{ question_1.answer_2 }}</label><br>
 
-    <input type="radio" id="color_green" name="answer" value="3" required>
-    <label for="color_green">{{ question_1.answer_3 }}</label><br>
+    <input type="radio" id="quest3" name="answer" value="3" required>
+    <label for="quest3">{{ question_1.answer_3 }}</label><br>
     
-    <input type="radio" id="color_yellow" name="answer" value="4" required>
-    <label for="color_yellow">{{ question_1.answer_4 }}</label><br>
+    <input type="radio" id="quest4" name="answer" value="4" required>
+    <label for="quest4">{{ question_1.answer_4 }}</label><br>
     
     <br>
     

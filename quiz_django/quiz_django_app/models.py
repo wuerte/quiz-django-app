@@ -6,12 +6,12 @@ import random
 class Game(models.Model):
     question_quantity = models.IntegerField(help_text = "value specified by user, how many question are in this game")
     actual_question = models.IntegerField(help_text = "id of actual question")
-    question_counter = models.IntegerField(default=1)
+    question_counter = models.IntegerField(default=1, help_text = "counts number of questions answered in this game")
     total_score = models.IntegerField(default=0)
 
 
 class Question(models.Model):
-    correct_answer = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)])
+    correct_answer = models.IntegerField(validators=[MinValueValidator(0.99), MaxValueValidator(4.01)])
     question_description = models.CharField(max_length=255, null=True)
     answer_1 = models.CharField(max_length=255)
     answer_2 = models.CharField(max_length=255)
