@@ -15,7 +15,12 @@ def first_question(request):
     question_1 = Question.generate_random_question()
 
     new_game = Game(question_quantity = 5, actual_question = question_1.id)
+    
     new_game.save()
+    new_game.questions_used.add(question_1)
+    new_game.save()
+
+    
 
     context = {
         'question_1': question_1,
@@ -27,6 +32,7 @@ def first_question(request):
 def question(request, game_id):
 
     game = Game.objects.get(id=game_id)
+    game.question_counter += 1
     
     #checking if the our answer is correct
     answer = int(request.POST['answer'])
@@ -35,18 +41,26 @@ def question(request, game_id):
     if answer == correct_answer:
         game.total_score += 1
     
-    new_question = Question.generate_random_question()
-    
-    game.actual_question = new_question.id
-    game.question_counter += 1
-    game.save()
-
-    context = {
-        'question': new_question,
-        'game': game,
-    }
 
     if game.question_counter <= game.question_quantity:
+        while True:
+            new_question = Question.generate_random_question()
+            if not game.questions_used.filter(id=new_question.id).exists():    
+                game.questions_used.add(new_question)
+                break
+
+        game.actual_question = new_question.id
+        game.save()
+
+        context = {
+            'question': new_question,
+            'game': game,
+        }
         return render(request, 'question.html', context)
+    # if game.question_counter <= game.question_quantity:
+    #     return render(request, 'question.html', context)
     else:
+        context = {
+            'game': game,
+        }
         return render(request, 'summary.html', context)
