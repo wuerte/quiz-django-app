@@ -23,7 +23,6 @@ class Question(models.Model):
         return question
     
 
-
 class Game(models.Model):
     question_quantity = models.IntegerField(help_text = "value specified by user, how many question are in this game")
     actual_question = models.IntegerField(help_text = "id of actual question")
@@ -31,3 +30,4 @@ class Game(models.Model):
     total_score = models.IntegerField(default=0)
     # question_used = models.CommaSeparatedIntegerField(max_length=200)
     questions_used= models.ManyToManyField(Question)
+    nickname = models.CharField(max_length=255, null=True)

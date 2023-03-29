@@ -57,10 +57,11 @@ def question(request, game_id):
             'game': game,
         }
         return render(request, 'question.html', context)
-    # if game.question_counter <= game.question_quantity:
-    #     return render(request, 'question.html', context)
+
     else:
+        percentage = ( game.total_score / game.question_quantity ) * 100
         context = {
             'game': game,
+            'percentage': percentage,
         }
         return render(request, 'summary.html', context)

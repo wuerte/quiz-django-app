@@ -1,2 +1,28 @@
-add mechanism to end game after certain numbers of questions in game
-add mechanism that pretend to duplicate question in one game
+DEV:
+
+multi language english/polish??
+add cancel game button that returns user to main menu
+hide game_id 
+
+add endless game mode ??
+
+
+improve UI
+
+users login and registration ??
+    add admin page
+        Add new Question option from admin page
+        load new questions from file from admin page
+    new question form for guests protected by password
+
+add field Your Name in main menu screen
+add ranking page
+add info about recent games in main menu page
+
+
+OPS:
+
+build docker image for this
+write instruction to lunch
+vps
+domain
