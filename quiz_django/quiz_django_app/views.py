@@ -62,8 +62,20 @@ def question(request, game_id):
 
     else:
         percentage = ( game.total_score / game.question_quantity ) * 100
+        game.percentage = percentage
+        game.save()
         context = {
             'game': game,
             'percentage': percentage,
         }
         return render(request, 'summary.html', context)
+    
+
+def classification(request):
+    
+    classification_list = Game.objects.all().order_by('-total_score')[:20]
+
+    context = {
+        'classification_list': classification_list,
+    }
+    return render(request, 'classification.html', context)

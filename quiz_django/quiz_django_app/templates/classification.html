@@ -1,0 +1,28 @@
+{% extends "master_template.html" %}
+
+{% block title %}
+  Quiz - classification
+{% endblock %}
+
+
+{% block header %}
+    <div id="header-container">
+        <h1>Classification - top 20</h1>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    
+    <p>TOP SCORES</p>
+ 
+    {% for game in classification_list %}
+    
+    <p>{{ game.nickname }}: {{ game.percentage }}</p>
+    {% endfor %}
+
+    <a href="{% url 'index' %}" class="game-button">
+        MAIN MENU
+    </a>
+
+{% endblock %}

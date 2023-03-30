@@ -31,3 +31,4 @@ class Game(models.Model):
     # question_used = models.CommaSeparatedIntegerField(max_length=200)
     questions_used= models.ManyToManyField(Question)
     nickname = models.CharField(max_length=255, null=True)
+    percentage = models.FloatField(null=True)

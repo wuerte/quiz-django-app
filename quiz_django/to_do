@@ -1,10 +1,24 @@
+ACTUAL TASK:
+
+add classification page:
+    add button on index page
+    add url
+    add view
+    add template with classification
+    add button to back
+
+
+BACKLOG:
+
 DEV:
 
-multi language english/polish??
 add cancel game button that returns user to main menu
 hide game_id 
 
+refactor summary with reverse !! additional url and view method
+
 add endless game mode ??
+multi language english/polish??
 
 improve UI
 
@@ -12,12 +26,11 @@ users login and registration ??
     add admin page
         Add new Question option from admin page
         load new questions from file from admin page
-    new question form for guests protected by password
+    new question form for guests protected by password(test user)
 
-add field Your Name in main menu screen
-add ranking page
+add classification page
 add info about recent games in main menu page
-
+    add date to game
 
 OPS:
 
