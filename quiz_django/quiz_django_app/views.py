@@ -6,15 +6,17 @@ import random
 
 
 def index(request):
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render())
+
+    return render(request, 'index.html')
 
 
 def first_question(request):
     
+    nickanme = request.POST['nickname']
     question_1 = Question.generate_random_question()
 
-    new_game = Game(question_quantity = 5, actual_question = question_1.id)
+    new_game = Game(question_quantity = 5, actual_question = question_1.id, nickname=nickanme)
+    
     
     new_game.save()
     new_game.questions_used.add(question_1)

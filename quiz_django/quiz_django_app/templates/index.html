@@ -13,7 +13,18 @@
 
 
 {% block content %}
-    <a href="{% url 'first_question' %}" id="start-game-button" class="start-game-button-a">
+    <form method="post" action="/quiz/first_question">
+
+    {% csrf_token %}
+    <p>Enter Your nickname:</p>
+    <br>
+    <input name="nickname" required>
+
+    <input type="submit" value="START GAME">
+  
+    </form>
+
+    {% comment %} <a href="{% url 'first_question' %}" id="start-game-button" class="start-game-button-a">
         START GAME
-    </a>
+    </a> {% endcomment %}
 {% endblock %}
