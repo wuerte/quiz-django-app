@@ -24,4 +24,10 @@
     <a href="{% url 'classification' %}" id="classification-button" class="game-button">
         classification
     </a>
+
+
+    <br>
+    {% for game in recent_games %}
+        <p> {{ game.nickname }}, {{ game.percentage }}, {{ game.created_at }} <p>
+    {% endfor %}
 {% endblock %}

@@ -6,8 +6,11 @@ import random
 
 
 def index(request):
+    recent_games = Game.objects.all().order_by('-created_at')[:10]
 
-    return render(request, 'index.html')
+    context = { 'recent_games': recent_games }
+
+    return render(request, 'index.html', context)
 
 
 def first_question(request):

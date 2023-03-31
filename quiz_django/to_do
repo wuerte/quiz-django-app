@@ -1,12 +1,9 @@
 ACTUAL TASK:
 
-add classification page:
-    add button on index page
-    add url
-    add view
-    add template with classification
-    add button to back
-
+add info about recent games in main menu page
+    add date field in Game class
+    add in view index var browsing objects
+    add in template this var
 
 BACKLOG:
 
@@ -28,9 +25,8 @@ users login and registration ??
         load new questions from file from admin page
     new question form for guests protected by password(test user)
 
-add classification page
-add info about recent games in main menu page
-    add date to game
+
+
 
 OPS:
 

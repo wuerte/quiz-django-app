@@ -32,3 +32,4 @@ class Game(models.Model):
     questions_used= models.ManyToManyField(Question)
     nickname = models.CharField(max_length=255, null=True)
     percentage = models.FloatField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
