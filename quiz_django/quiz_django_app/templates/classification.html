@@ -18,7 +18,7 @@
  
     {% for game in classification_list %}
     
-    <p>{{ game.nickname }}: {{ game.percentage }}</p>
+    <p>{{ game.nickname }}: {{ game.percentage }}, {{ game.created_at }}</p>
     {% endfor %}
 
     <a href="{% url 'index' %}" class="game-button">

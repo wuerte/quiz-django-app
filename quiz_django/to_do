@@ -1,36 +1,23 @@
 ACTUAL TASK:
-
-add info about recent games in main menu page
-    add date field in Game class
-    add in view index var browsing objects
-    add in template this var
+    add cancel_game button that returns user to main menu
+        add html button in question.html and first_question.html with url cancel_game
+        cancel_game view with deleting actual game object and reverse to index url
 
 BACKLOG:
+    DEV:
+    add game_done marker to track if game has been completed, to avoid displaying not completed games in main menu in recent games section
+    improve UI
+    refactor summary with reverse !! additional url and view method
+    add endless game mode ??
+    multi language english/polish??
+    users login and registration ??
+        add admin page
+            Add new Question option from admin page
+            load new questions from file from admin page
+        new question form for guests protected by password(test user)
 
-DEV:
-
-add cancel game button that returns user to main menu
-hide game_id 
-
-refactor summary with reverse !! additional url and view method
-
-add endless game mode ??
-multi language english/polish??
-
-improve UI
-
-users login and registration ??
-    add admin page
-        Add new Question option from admin page
-        load new questions from file from admin page
-    new question form for guests protected by password(test user)
-
-
-
-
-OPS:
-
-build docker image for this
-write instruction to lunch
-vps
-domain
+    OPS:
+        build docker image for this
+        write instruction to lunch
+        vps
+        domain

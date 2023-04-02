@@ -12,7 +12,6 @@
     <div id="header-container">
 
         <h1>Question nr {{ game.question_counter }}</h1>
-        <p>Game id:{{ game.id }}</p>
         <p>Total score:{{ game.total_score }}</p>
 
     </div>
@@ -43,5 +42,9 @@
     <input type="submit" value="sumbit">
 
   </form>
+
+  <a href="/quiz/cancel_game/{{ game.id }}" class="game-button">
+    cancel game
+  </a>
     
 {% endblock %}

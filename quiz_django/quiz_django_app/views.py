@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import *
+from django.urls import reverse
 import random
 
 
@@ -82,3 +83,10 @@ def classification(request):
         'classification_list': classification_list,
     }
     return render(request, 'classification.html', context)
+
+
+def cancel_game(request, game_id):
+    cancelled_game = Game.objects.get(id=game_id)
+    cancelled_game.delete()
+
+    return HttpResponseRedirect(reverse('index'))
