@@ -33,3 +33,4 @@ class Game(models.Model):
     nickname = models.CharField(max_length=255, null=True)
     percentage = models.FloatField(null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    completed_game = models.BooleanField(default=False)

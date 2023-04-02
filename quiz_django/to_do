@@ -1,7 +1,8 @@
 ACTUAL TASK:
-    add cancel_game button that returns user to main menu
-        add html button in question.html and first_question.html with url cancel_game
-        cancel_game view with deleting actual game object and reverse to index url
+    add game_completed marker to track if game has been completed, to avoid displaying not completed games in main menu in recent games section
+        -add boolean field game_completed
+        -add mechanism in view summary to mark actual game as done
+        add mechanism in view index to filter only completed games in recent games list
 
 BACKLOG:
     DEV:

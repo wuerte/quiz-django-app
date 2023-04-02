@@ -7,7 +7,7 @@ import random
 
 
 def index(request):
-    recent_games = Game.objects.all().order_by('-created_at')[:10]
+    recent_games = Game.objects.filter(completed_game=True).order_by('-created_at')[:10]
 
     context = { 'recent_games': recent_games }
 
@@ -67,6 +67,7 @@ def question(request, game_id):
     else:
         percentage = ( game.total_score / game.question_quantity ) * 100
         game.percentage = percentage
+        game.completed_game = True
         game.save()
         context = {
             'game': game,
