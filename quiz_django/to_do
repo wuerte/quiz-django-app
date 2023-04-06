@@ -1,12 +1,7 @@
 ACTUAL TASK:
-    add game_completed marker to track if game has been completed, to avoid displaying not completed games in main menu in recent games section
-        -add boolean field game_completed
-        -add mechanism in view summary to mark actual game as done
-        add mechanism in view index to filter only completed games in recent games list
 
 BACKLOG:
     DEV:
-    add game_done marker to track if game has been completed, to avoid displaying not completed games in main menu in recent games section
     improve UI
     refactor summary with reverse !! additional url and view method
     add endless game mode ??
@@ -16,9 +11,12 @@ BACKLOG:
             Add new Question option from admin page
             load new questions from file from admin page
         new question form for guests protected by password(test user)
+    some funcionality with files
 
     OPS:
-        build docker image for this
-        write instruction to lunch
-        vps
-        domain
+    build docker image for this
+    write instruction to lunch
+    vps
+    domain
+    change db to postgres 
+    .git ignore

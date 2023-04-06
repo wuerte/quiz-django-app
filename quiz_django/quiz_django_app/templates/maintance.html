@@ -1,0 +1,28 @@
+{% extends "master_template.html" %}
+
+{% block title %}
+
+  Quiz summary
+
+{% endblock %}
+
+
+{% block header %}
+
+    <div id="header-container">
+
+        <p>Maintance page</p>
+
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    
+    <p>Maintance panel</p>
+
+    <a href="{% url 'index' %}" id="main-menu-button" class="game-button">
+        MAIN MENU
+    </a>
+    
+{% endblock %}

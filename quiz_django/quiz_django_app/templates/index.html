@@ -30,4 +30,11 @@
     {% for game in recent_games %}
         <p> {{ game.nickname }}, {{ game.percentage }}, {{ game.created_at }} <p>
     {% endfor %}
+
+    <br>
+    <a href="{% url 'maintance' %}" id="maintance-button" class="game-button">
+        MAINTANCE
+    </a>
+
+
 {% endblock %}
