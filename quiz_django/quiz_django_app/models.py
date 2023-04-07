@@ -28,7 +28,6 @@ class Game(models.Model):
     actual_question = models.IntegerField(help_text = "id of actual question")
     question_counter = models.IntegerField(default=1, help_text = "counts number of questions answered in this game")
     total_score = models.IntegerField(default=0)
-    # question_used = models.CommaSeparatedIntegerField(max_length=200)
     questions_used= models.ManyToManyField(Question)
     nickname = models.CharField(max_length=255, null=True)
     percentage = models.FloatField(null=True)

@@ -76,3 +76,17 @@ def cancel_game(request, game_id):
 
 def maintance(request): 
     return render(request, 'maintance.html')
+
+
+def add_record_question(request):
+    question_description = request.POST['question_description']
+    correct_answer = request.POST['correct_answer']
+    answer_1 = request.POST['answer_1']
+    answer_2 = request.POST['answer_2']
+    answer_3 = request.POST['answer_3']
+    answer_4 = request.POST['answer_4']
+
+    new_question = Question(question_description=question_description, correct_answer=correct_answer, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)
+    new_question.save()
+
+    return HttpResponseRedirect(reverse('maintance'))

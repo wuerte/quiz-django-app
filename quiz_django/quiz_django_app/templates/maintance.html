@@ -19,10 +19,60 @@
 
 {% block content %}
     
-    <p>Maintance panel</p>
+    <p>Maintance panel - add question</p>
 
+    <form method="post" action="/quiz/add_record_question">
+        {% csrf_token %}
+
+        <label>
+            Question description:
+            <br>
+            <input name="question_description" required>
+            <br><br>
+        </label>
+
+        <label>
+            Answer 1:
+            <br>
+            <input name="answer_1" required>
+            <br><br>
+        </label>
+
+        <label>
+            Answer 2:
+            <br>
+            <input name="answer_2" required>
+            <br><br>
+        </label>
+
+        <label>
+            Answer 3:
+            <br>
+            <input name="answer_3" required>
+            <br><br>
+        </label>
+
+        <label>
+            Answer 4:
+            <br>
+            <input name="answer_4" required>
+            <br><br>
+        </label>
+
+        <label>
+            Correct asnwer (1-4):
+            <br>
+            <input name="correct_answer" pattern="[1-4]" required>
+        </label>
+        
+        <br><br>
+        <input type="submit" value="ADD QUESTION">
+    </form>
+
+    <br><br>
     <a href="{% url 'index' %}" id="main-menu-button" class="game-button">
         MAIN MENU
     </a>
+    <br><br>
     
 {% endblock %}
