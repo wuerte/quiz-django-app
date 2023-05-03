@@ -39,12 +39,14 @@
     
     <br>
     
-    <input type="submit" value="sumbit">
+    <input type="submit" value="NEXT QUESTION" class="btn btn-primary btn-lg">
 
   </form>
 
-  <a href="/quiz/cancel_game/{{ game.id }}" class="game-button">
-    cancel game
+  <br>
+
+  <a href="{% url 'index' %}">
+    <button type="button" class="btn btn-primary btn-lg">CANCEL GAME</button>
   </a>
     
 {% endblock %}
