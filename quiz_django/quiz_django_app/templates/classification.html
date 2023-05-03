@@ -14,15 +14,32 @@
 
 {% block content %}
     
-    <p>TOP SCORES</p>
- 
-    {% for game in classification_list %}
-    
-    <p>{{ game.nickname }}: {{ game.percentage }}, {{ game.created_at }}</p>
-    {% endfor %}
+    <p>Top scores:</p>
 
-    <a href="{% url 'index' %}" class="game-button">
-        MAIN MENU
+    <div class="table-container">
+        <table class="table table-light table-bordered table-hover table-sm">
+            <thead>
+                <tr>
+                    <td>Nickname</td>
+                    <td>Score [%]</td>
+                    <td>Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in classification_list %}
+                    <tr>
+                        <td>{{ game.nickname }}</td>
+                        <td>{{ game.percentage }}</td>
+                        <td>{{ game.created_at }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+    <a href="{% url 'index' %}">
+        <button type="button" class="btn btn-primary btn-lg">MAIN MENU</button>
     </a>
+    <br>
 
 {% endblock %}

@@ -46,3 +46,8 @@ body {
 #body-container {
     margin-top: 60px;
 }
+
+.table-container {
+    width: 80%;
+    margin: auto;
+}
