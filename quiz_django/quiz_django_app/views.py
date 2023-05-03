@@ -74,8 +74,8 @@ def cancel_game(request, game_id):
     return HttpResponseRedirect(reverse('index'))
 
 
-def maintance(request): 
-    return render(request, 'maintance.html')
+def maintenance(request): 
+    return render(request, 'maintenance.html')
 
 
 def add_record_question(request):
@@ -89,4 +89,4 @@ def add_record_question(request):
     new_question = Question(question_description=question_description, correct_answer=correct_answer, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)
     new_question.save()
 
-    return HttpResponseRedirect(reverse('maintance'))
+    return HttpResponseRedirect(reverse('maintenance'))

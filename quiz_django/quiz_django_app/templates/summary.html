@@ -11,7 +11,7 @@
 
     <div id="header-container">
 
-        <p>Quiz finished !</p>
+        <h1>Quiz finished !</h1>
 
     </div>
 
@@ -25,10 +25,14 @@
     <p>You get {{ percentage }} % </p>
 
     <br>
-    <br>
+    
 
-    <a href="{% url 'index' %}" id="start-game-button" class="game-button">
+    {% comment %} <a href="{% url 'index' %}" id="start-game-button" class="game-button">
         MAIN MENU
+    </a> {% endcomment %}
+
+    <a href="{% url 'index' %}">
+        <button type="button" class="btn btn-primary btn-lg">MAIN MENU</button>
     </a>
     
 {% endblock %}
