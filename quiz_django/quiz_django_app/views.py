@@ -3,10 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import *
 from django.urls import reverse
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+
 import random
 
 
 def index(request):
+    logout(request)
     recent_games = Game.objects.filter(completed_game=True).order_by('-created_at')[:10]
     context = { 'recent_games': recent_games }
     return render(request, 'index.html', context)
@@ -73,7 +77,7 @@ def cancel_game(request, game_id):
     cancelled_game.delete()
     return HttpResponseRedirect(reverse('index'))
 
-
+@login_required
 def maintenance(request): 
     return render(request, 'maintenance.html')
 
