@@ -1,0 +1,36 @@
+# Pliki tymczasowe i pamięć podręczna
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py~ 
+*.swp
+*.log
+*.cache/
+*.egg-info/
+*.egg
+
+# Pliki wygenerowane przez środowisko programistyczne
+.idea/
+.vscode/
+
+# Pliki z konfiguracją
+*.env
+.env.*
+*.ini
+*.cfg
+*.conf
+*.yaml
+*.yml
+
+# Pliki medii i statyczne
+media/
+static/
+
+# Pliki bazy danych
+db.sqlite3
+*.sql
+
+# Pliki zależności
+venv/
+pipenv/
