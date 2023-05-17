@@ -25,7 +25,6 @@ __pycache__/
 
 # Pliki medii i statyczne
 media/
-static/
 
 # Pliki bazy danych
 db.sqlite3

@@ -37,13 +37,15 @@
             </tr>
         </thead>
         <tbody>
-            {% for game in recent_games %}
-                <tr>
-                    <td>{{ game.nickname }}</td>
-                    <td>{{ game.percentage }}</td>
-                    <td>{{ game.created_at }}</td>
-                </tr>
-            {% endfor %}
+            {% comment %} {% if recent_games is not None %}
+                {% for game in recent_games %}
+                    <tr>
+                        <td>{{ game.nickname }}</td>
+                        <td>{{ game.percentage }}</td>
+                        <td>{{ game.created_at }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %} {% endcomment %}
         </tbody>
     </table>
     </div>
