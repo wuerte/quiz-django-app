@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            {% comment %} {% if recent_games is not None %}
+            {% if recent_games is not None %}
                 {% for game in recent_games %}
                     <tr>
                         <td>{{ game.nickname }}</td>
@@ -45,7 +45,7 @@
                         <td>{{ game.created_at }}</td>
                     </tr>
                 {% endfor %}
-            {% endif %} {% endcomment %}
+            {% endif %}
         </tbody>
     </table>
     </div>
