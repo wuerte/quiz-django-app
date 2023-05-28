@@ -1,0 +1,25 @@
+
+
+  
+{% extends "master_template.html" %}
+
+{% block title %}
+Quiz - upload csv
+{% endblock %}
+
+
+{% block header %}
+    <div id="header-container">
+        <h1>Upload from csv!</h1>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Wyślij</button>
+    </form>
+{% endblock %}
+  

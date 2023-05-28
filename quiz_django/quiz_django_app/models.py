@@ -21,7 +21,12 @@ class Question(models.Model):
         random_question_id = random.randint(1, all_questions_number)
         question = Question.objects.get(id=random_question_id)
         return question
-    
+
+GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Other'),
+    )    
 
 class Game(models.Model):
     question_quantity = models.IntegerField(help_text = "value specified by user, how many question are in this game")
@@ -30,6 +35,8 @@ class Game(models.Model):
     total_score = models.IntegerField(default=0)
     questions_used= models.ManyToManyField(Question)
     nickname = models.CharField(max_length=255, null=True)
+    age = models.IntegerField(validators=[MinValueValidator(0.99), MaxValueValidator(150)], null=True)  
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True)
     percentage = models.FloatField(null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     completed_game = models.BooleanField(default=False)

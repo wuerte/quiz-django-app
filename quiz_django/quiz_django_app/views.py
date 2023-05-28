@@ -5,6 +5,8 @@ from .models import *
 from django.urls import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from .forms import UploadCSVForm
+import csv
 
 import random
 
@@ -18,8 +20,10 @@ def index(request):
 
 def first_question(request): 
     nickanme = request.POST['nickname']
+    age = request.POST['age']
+    gender = request.POST['gender']
     question_1 = Question.generate_random_question()
-    new_game = Game(question_quantity = 5, actual_question = question_1.id, nickname=nickanme)
+    new_game = Game(question_quantity = 5, actual_question = question_1.id, nickname=nickanme, age=age, gender=gender)
     new_game.save()
     new_game.questions_used.add(question_1)
     new_game.save()
@@ -94,3 +98,29 @@ def add_record_question(request):
     new_question.save()
 
     return HttpResponseRedirect(reverse('maintenance'))
+
+
+def upload_csv(request):
+    if request.method == 'POST':
+        form = UploadCSVForm(request.POST, request.FILES)
+        if form.is_valid():
+            csv_file = request.FILES['csv_file']
+            decoded_file = csv_file.read().decode('utf-8').splitlines()
+            reader = csv.DictReader(decoded_file)
+            
+            for row in reader:
+                question = Question(
+                    correct_answer=row['correct_answer'],
+                    question_description=row['question_description'],
+                    answer_1=row['answer_1'],
+                    answer_2=row['answer_2'],
+                    answer_3=row['answer_3'],
+                    answer_4=row['answer_4']
+                )
+                question.save()
+
+            return render(request, 'success.html')
+    else:
+        form = UploadCSVForm()
+
+    return render(request, 'upload_csv.html', {'form': form})

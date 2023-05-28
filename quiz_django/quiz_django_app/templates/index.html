@@ -16,11 +16,32 @@
 
     <form method="post" action="/quiz/first_question">
         {% csrf_token %}
-        <p>Enter Your nickname:</p>
-        
+        {% comment %} <p>Enter Your nickname:</p>
         <input name="nickname" required>
-        <br><br>
+        <br> {% endcomment %}
+        <label>
+            Nickname:
+            <br>
+            <input name="nickname"required>
+        </label> 
+        <br>
+        <label>
+            Age:
+            <br>
+            <input name="age" pattern="^(?:[1-9]|[1-9][0-9]|100)$" required>
+        </label>
+        <br>
+        <br>
+        <label for="gender">Płeć:</label>
+        <select id="gender" name="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select>
+        <br>
+        <br>
         <input type="submit" value="START GAME" class="btn btn-primary btn-lg">
+
     </form>
 
 
