@@ -9,6 +9,7 @@ This is a quiz app project built for educational purposes. The project includes 
 - High score classification
 - Recent games list in the main menu
 - Form for adding new questions
+- Upload questions from csv(hidden page quiz/upload_csv)
 
 ## Installation
 
