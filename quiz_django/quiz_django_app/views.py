@@ -124,3 +124,11 @@ def upload_csv(request):
         form = UploadCSVForm()
 
     return render(request, 'upload_csv.html', {'form': form})
+
+
+def analytics(request):
+    return render(request, 'analytics.html')
+
+
+def general_stats(request):
+    return render(request, 'general_stats.html')

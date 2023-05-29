@@ -9,5 +9,7 @@ urlpatterns = [
     path('quiz/maintenance', views.maintenance, name='maintenance'),
     path('quiz/add_record_question', views.add_record_question, name='add_record_question'),
     path('quiz/cancel_game/<int:game_id>', views.cancel_game, name='cancel_game'),
-    path('quiz/upload_csv', views.upload_csv, name="upload_csv")
+    path('quiz/upload_csv', views.upload_csv, name="upload_csv"),
+    path('quiz/analytics', views.analytics, name="analytics"),
+    path('quiz/general_stats', views.general_stats, name="general_stats"),
 ]
