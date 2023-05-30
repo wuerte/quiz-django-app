@@ -7,8 +7,12 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import UploadCSVForm
 import csv
-
+import pandas as pd
+from django.db.models import QuerySet
 import random
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -130,5 +134,15 @@ def analytics(request):
     return render(request, 'analytics.html')
 
 
-def general_stats(request):
-    return render(request, 'general_stats.html')
+def all_games(request):
+    all_games = Game.objects.all().values()
+    df = pd.DataFrame.from_records(all_games)
+    table = df.to_html()
+    new_table = table.replace("class=\"dataframe\"","class=\"table table-light table-bordered table-hover table-sm\"")
+    # logger.info(f"LOGGER    df: {df}")
+    logger.info(f"LOGGER    table: {new_table[:100]}")
+    context = {'df': df,
+               'table': new_table
+               
+               }
+    return render(request, 'all_games.html', context)

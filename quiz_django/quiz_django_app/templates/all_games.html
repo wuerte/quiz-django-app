@@ -14,8 +14,9 @@ Quiz - analytics
 
 {% block content %}
 
-    some data
-
+    <table class="table table-light table-bordered table-hover table-sm">
+        {{ table|safe }}
+    </table>
 
     <br>
     <a href="{% url 'index' %}">

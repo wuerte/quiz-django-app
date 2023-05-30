@@ -16,10 +16,18 @@ class Question(models.Model):
        
     @classmethod
     def generate_random_question(self):
-        all_questions = Question.objects.all()
+        # all_questions = Question.objects.all()
+        # all_questions_number = len(all_questions)
+        # random_question_id = random.randint(1, all_questions_number)
+        # question = Question.objects.get(id=random_question_id)
+        # return question
+        all_questions = Question.objects.all().values_list('id', flat=True)
         all_questions_number = len(all_questions)
         random_question_id = random.randint(1, all_questions_number)
-        question = Question.objects.get(id=random_question_id)
+        while True:
+            if random_question_id in all_questions:
+                question = Question.objects.get(id=random_question_id)
+                break
         return question
 
 GENDER_CHOICES = (
