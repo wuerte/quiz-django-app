@@ -1,0 +1,72 @@
+{% extends "master_template.html" %}
+
+{% block title %}
+Quiz - general stats
+{% endblock %}
+
+
+{% block header %}
+    <div id="header-container">
+        <h1>analytics - general stats</h1>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <h2>AGE</h2>
+    age mean:{{ age_mean }}
+    <br>
+    percantage of age 1-9: {{age_0_prct_str}}
+    <br>
+    percantage of age 10-19: {{age_10_prct_str}}
+    <br>
+    percantage of age 20-29: {{age_20_prct_str}}
+    <br>
+    percantage of age 30-39: {{age_30_prct_str}}
+    <br>
+    percantage of age 40-49: {{age_40_prct_str}}
+    <br>
+    percantage of age 50-59: {{age_50_prct_str}}
+    <br>
+    percantage of age 60-69: {{age_60_prct_str}}
+    <br>
+    percantage of age 70-79: {{age_70_prct_str}}
+    <br>
+    percantage of age 80-89: {{age_80_prct_str}}
+    <br>
+    percantage of age 90-99: {{age_90_prct_str}}
+    
+    <hr>
+    <h2>GENDER</h2>
+    percantage of each gender:
+    <br>
+    female: {{ female_prct }}
+    <br>
+    male: {{ male_prct }}
+    <br>
+    average age of men: {{male_age_avg}}
+    <br>
+    average age of women: {{female_age_avg}}
+    <br>
+    average score of men: {{male_score_avg}}
+    <br>
+    average score of women: {{female_score_avg}}
+    <br>
+    <hr>
+    <h2>SCORES</h2>
+    score mean: {{ score_avg }} points per game
+    <br>
+    
+    <br>
+    <hr>
+    <a href="{% url 'analytics' %}">
+        <button type="button" class="btn btn-primary btn-lg">ANALYTICS</button>
+    </a>
+    <br><br>
+    <a href="{% url 'index' %}">
+        <button type="button" class="btn btn-primary btn-lg">MAIN MENU</button>
+    </a>
+    <br><br>
+
+{% endblock %}
+  

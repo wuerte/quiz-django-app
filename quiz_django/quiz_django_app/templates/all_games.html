@@ -1,23 +1,30 @@
 {% extends "master_template.html" %}
 
 {% block title %}
-Quiz - analytics
+Quiz - all games
 {% endblock %}
 
 
 {% block header %}
     <div id="header-container">
-        <h1>analytics</h1>
+        <h1>analytics - all games</h1>
     </div>
 {% endblock %}
 
 
 {% block content %}
 
+    <p>Summary played {{df_len}} games</p>
+
     <table class="table table-light table-bordered table-hover table-sm">
         {{ table|safe }}
     </table>
 
+
+    <a href="{% url 'analytics' %}">
+        <button type="button" class="btn btn-primary btn-lg">ANALYTICS</button>
+    </a>
+    <br>
     <br>
     <a href="{% url 'index' %}">
         <button type="button" class="btn btn-primary btn-lg">MAIN MENU</button>

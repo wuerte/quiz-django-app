@@ -12,4 +12,5 @@ urlpatterns = [
     path('quiz/upload_csv', views.upload_csv, name="upload_csv"),
     path('quiz/analytics', views.analytics, name="analytics"),
     path('quiz/all_games', views.all_games, name="all_games"),
+    path('quiz/general_stats', views.general_stats, name="general_stats"),
 ]
