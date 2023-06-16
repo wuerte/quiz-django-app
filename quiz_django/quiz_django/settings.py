@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quiz_django_app'
+    'quiz_django_app',
+    'bootstrap',
+    'fontawesome',
 ]
 
 MIDDLEWARE = [

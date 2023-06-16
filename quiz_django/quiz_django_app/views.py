@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.template import loader
 from .models import *
 from django.urls import reverse
@@ -11,6 +11,13 @@ import pandas as pd
 from django.db.models import QuerySet
 import random
 import logging
+from reportlab.pdfgen import canvas
+import os
+from django.conf import settings
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.contrib.staticfiles import finders
+
 
 logger = logging.getLogger(__name__)
 
@@ -217,3 +224,112 @@ def general_stats(request):
                 'female_score_avg': female_score_avg,
                }
     return render(request, 'general_stats.html', context)
+
+
+def link_callback(uri, rel):
+            result = finders.find(uri)
+            if result:
+                    if not isinstance(result, (list, tuple)):
+                            result = [result]
+                    result = list(os.path.realpath(path) for path in result)
+                    path=result[0]
+            else:
+                    sUrl = settings.STATIC_URL   
+                    sRoot = settings.STATIC_ROOT 
+                    mUrl = settings.MEDIA_URL    
+                    mRoot = settings.MEDIA_ROOT      
+
+                    if uri.startswith(mUrl):
+                            path = os.path.join(mRoot, uri.replace(mUrl, ""))
+                    elif uri.startswith(sUrl):
+                            path = os.path.join(sRoot, uri.replace(sUrl, ""))
+                    else:
+                            return uri
+
+            if not os.path.isfile(path):
+                    raise Exception(
+                            'media URI must start with %s or %s' % (sUrl, mUrl)
+                    )
+            return path
+
+
+def generate_pdf(request):
+    all_games = Game.objects.all().values()
+    df = pd.DataFrame.from_records(all_games)
+    
+    df_describe = df.describe()
+    table = df_describe.to_html()
+    new_table = table.replace("class=\"dataframe\"","class=\"table table-light table-bordered table-hover table-sm\"")
+
+    #age stats
+    def age_prct(age_1, age_2):
+        all_age = df['age'].count()
+        age = df[df['age'].between(age_1, age_2)].count()[0]
+        age_prct = age / all_age
+        age_prct_str = f"{round(age_prct*100, 2)}%"
+        return age_prct_str
+
+    age_mean = df['age'].mean()
+    all_age = df['age'].count()
+    age_0_prct_str = age_prct(1,9)
+    age_10_prct_str = age_prct(10,19)
+    age_20_prct_str = age_prct(20,29)
+    age_30_prct_str = age_prct(30,39)
+    age_40_prct_str = age_prct(40,49)
+    age_50_prct_str = age_prct(50,59)
+    age_60_prct_str = age_prct(60,69)
+    age_70_prct_str = age_prct(70,79)
+    age_80_prct_str = age_prct(80,89)
+    age_90_prct_str = age_prct(90,99)
+ 
+    #gender stats
+    # male = df.loc[df['gender'] == 'M'].shape[0]
+    male = df[df['gender'] == 'M'].shape[0]
+    female = df[df['gender'] == 'F'].shape[0]
+    all_gender = df['gender'].count()
+    male_prct = male / all_gender
+    female_prct = female / all_gender
+    male_prct_str = f"{round(male_prct*100, 2)}%"
+    female_prct_str = f"{round(female_prct*100, 2)}%"
+    male_age_avg = df[df['gender'] == 'M']['age'].mean()
+    female_age_avg = df[df['gender'] == 'F']['age'].mean()
+    male_score_avg = df[df['gender'] == 'M']['total_score'].mean()
+    female_score_avg = df[df['gender'] == 'F']['total_score'].mean()
+    logger.info(f"LOGGER    test1: {male_age_avg}, test2: {female_age_avg} ")
+
+    #game stats
+    score_avg = df['total_score'].mean()
+    score_avg_str = f"{round(score_avg, 2)}"
+    
+    context = { 'new_table': new_table,
+                'age_mean': age_mean,
+                'female_prct': female_prct_str,
+                'male_prct': male_prct_str,
+                'age_0_prct_str': age_0_prct_str,
+                'age_10_prct_str': age_10_prct_str,
+                'age_20_prct_str': age_20_prct_str,
+                'age_30_prct_str': age_30_prct_str,
+                'age_40_prct_str': age_40_prct_str,
+                'age_50_prct_str': age_50_prct_str,
+                'age_60_prct_str': age_60_prct_str,
+                'age_70_prct_str': age_70_prct_str,
+                'age_80_prct_str': age_80_prct_str,
+                'age_90_prct_str': age_90_prct_str,
+                'male_age_avg': male_age_avg,
+                'female_age_avg': female_age_avg,
+                'score_avg': score_avg_str,
+                'male_score_avg': male_score_avg,
+                'female_score_avg': female_score_avg,
+               }
+
+    template_path = 'report_analytics.html'
+    response = HttpResponse(content_type='application/pdf')
+    # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    response['Content-Disposition'] = 'filename="report_analytics.pdf"'
+    template = get_template(template_path)
+    html = template.render(context)
+    pisa_status = pisa.CreatePDF(
+       html, dest=response, link_callback=link_callback)
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
