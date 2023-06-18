@@ -52,14 +52,6 @@ To get started with the project, follow these steps:
      pkill -f runserver
      ```
 
-## Dependencies
-
-The project requires the following dependencies:
-asgiref==3.6.0
-Django==4.1.7
-psycopg2-binary==2.9.5
-sqlparse==0.4.3
-
 ## About the Author
 
 My name is Radosław Wierzgała. I am a programmer since the beginning of 2023, with a background in electrical engineering from my bachelor's degree and a technical high school diploma in computer science. Currently, I am primarily focused on Python in web development and data science. I have a keen interest in exploring new technologies, the automotive industry, and trekking.

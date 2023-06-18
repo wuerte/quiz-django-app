@@ -13,6 +13,16 @@ Quiz - upload csv
 
 
 {% block content %}
+    <pre class="text-start" style="margin-left:10%">example of csv file:
+correct_answer,question_description,answer_1,answer_2,answer_3,answer_4
+1,"What is the capital of France?",Paris,London,Berlin,Madrid
+3,"Which language is spoken in Brazil?",Portuguese,Spanish,English,French
+4,"Who discovered gravity?",Isaac Newton,Albert Einstein,Thomas Edison,Nikola Tesla
+1,"What is the chemical symbol for oxygen?",O,H,He,N
+2,"Who is the author of the Harry Potter book series?",J.K. Rowling,Stephen King,George R.R. Martin,Harper Lee
+3,"Which country is famous for the Pyramids?",Egypt,China,India,Italy
+    </pre>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
